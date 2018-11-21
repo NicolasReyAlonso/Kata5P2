@@ -25,4 +25,16 @@ public class MailHistogramBuilder {
         }
         return toRet;
     }
+
+    public static Histogram<String> buildSt(List<String> a) {
+        Histogram <String> toRet = new Histogram();
+        Iterator x = a.iterator();
+        String c;
+        while(x.hasNext()){
+            c = (String) x.next();
+            toRet.increment(c);
+        }
+        return toRet;   
+    }
 }
+
