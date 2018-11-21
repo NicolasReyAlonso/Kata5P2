@@ -10,6 +10,7 @@ import Model.Mail;
 import View.HistogramDisplay;
 import View.MailHistogramBuilder;
 import View.MailListReader;
+import View.MailListReaderDB;
 import java.util.List;
 
 /**
@@ -17,8 +18,9 @@ import java.util.List;
  * @author nicolasreyalonso
  */
 public class Kata5P2 {
-    private static String fileName = "/Users/nicolasreyalonso/NetBeansProjects/kata4/email.txt";
-    private static List <Mail> a;
+    private static String URL = "/Users/nicolasreyalonso/NetBeansProjects/kata5P1/mail.db";
+    private static String sql = "SELECT direccion FROM email";
+    private static List <String> a;
     private static Histogram<String> b;
     /**
      * @param args the command line arguments
@@ -33,12 +35,13 @@ public class Kata5P2 {
     input();
     process();
     output();
+
     }
     public static void input(){
-        a = MailListReader.read(fileName); 
+        a = MailListReaderDB.read(URL, sql); 
     }
     public static void process(){
-        b = MailHistogramBuilder.build(a);
+        b = MailHistogramBuilder.buildSt(a);
     }
     public static void output(){
         HistogramDisplay hist = new HistogramDisplay(b);
